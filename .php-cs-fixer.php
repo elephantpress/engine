@@ -15,6 +15,7 @@ return (new PhpCsFixer\Config())
         '@PHP83Migration' => true,
         'php_unit_internal_class' => false,
         'php_unit_test_class_requires_covers' => false,
+        'php_unit_strict' => false,
     ])
     ->setRiskyAllowed(true)
     ->setFinder($finder);

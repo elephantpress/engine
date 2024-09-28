@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace ElephantPress\Engine\Tests\Document;
 
-use ElephantPress\Engine\Document\Loader;
 use ElephantPress\Engine\Document\Document;
+use ElephantPress\Engine\Document\Loader;
 use PHPUnit\Framework\TestCase;
 
 class PageTest extends TestCase
