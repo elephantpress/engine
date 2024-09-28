@@ -15,7 +15,5 @@ function fileNameNormalizer(string $path): string
 
 function buildFilePath(string $basePath, string $path): string
 {
-    $path = fileNameNormalizer($path);
-
     return rtrim($basePath, '/').'/'.ltrim($path, '/');
 }

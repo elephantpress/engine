@@ -12,13 +12,14 @@ class MetaTreeTest extends TestCase
 {
     public function testFind(): void
     {
-        $finder = new MetaTree();
-        $meta = $finder->find(__DIR__.'/pages');
+        $finder = new MetaTree(__DIR__.'/pages');
+        $meta = $finder->find('/');
 
         $expected = [
-            new Meta(__DIR__.'/pages', 'index', 'ElephantPress TOP', 'index.md'),
-            new Meta(__DIR__.'/pages', 'start', 'ElephantPress Child', null, [
-                new Meta(__DIR__.'/pages/start', 'index', 'Start Page', 'index.md'),
+            new Meta('/', 'index', 'ElephantPress TOP', 'index.md'),
+            new Meta('/', 'start', 'ElephantPress Child', null, [
+                new Meta('/start', 'index', 'Start Page', 'index.md'),
+                new Meta('/start', 'end', 'End Page', 'end.md'),
             ]),
         ];
 

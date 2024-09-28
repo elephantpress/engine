@@ -22,6 +22,6 @@ class LoaderTest extends TestCase
             ElephantPress is a markdown site generator built with PHP.
             EOF;
 
-        self::assertSame($expected, $loader->load('/'));
+        self::assertSame($expected, $loader->load('/index.md'));
     }
 }

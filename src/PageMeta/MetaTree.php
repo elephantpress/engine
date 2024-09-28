@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace ElephantPress\Engine\PageMeta;
 
-class MetaTree
+final readonly class MetaTree
 {
+    public function __construct(private string $basePath)
+    {
+    }
+
     /**
      * @param mixed $path
      *
@@ -21,7 +25,7 @@ class MetaTree
      */
     public function loadMeta(string $path): array
     {
-        $fileName = $path.'/_meta.json';
+        $fileName = $this->basePath . $path. '/_meta.json';
         if (!file_exists($fileName)) {
             return [];
         }
@@ -33,5 +37,10 @@ class MetaTree
         }
 
         return $meta;
+    }
+
+    public function isDir(Meta $meta): bool
+    {
+        return is_dir($this->basePath . $meta->path.'/'.$meta->name);
     }
 }

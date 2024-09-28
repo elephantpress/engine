@@ -7,7 +7,7 @@ namespace ElephantPress\Engine\PageMeta;
 final readonly class Meta
 {
     public function __construct(
-        public string $basePath,
+        public string $path,
         public string $name,
         public string $title,
         public ?string $fileName = null,
@@ -19,10 +19,10 @@ final readonly class Meta
      */
     public function makeChildren(MetaTree $finder): self
     {
-        if (is_dir($this->basePath.'/'.$this->name)) {
-            $children = $finder->loadMeta($this->basePath.'/'.$this->name);
+        if ($finder->isDir($this)) {
+            $children = $finder->loadMeta($this->path. $this->name);
 
-            return new self($this->basePath, $this->name, $this->title, null, $children);
+            return new self($this->path, $this->name, $this->title, null, $children);
         }
 
         return $this;
